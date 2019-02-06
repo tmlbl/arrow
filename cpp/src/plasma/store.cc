@@ -1075,7 +1075,7 @@ int main(int argc, char* argv[]) {
       case 'm': {
         char extra;
         int scanned = sscanf(optarg, "%" SCNd64 "%c", &system_memory, &extra);
-        ARROW_CHECK(scanned == 1);
+        ARROW_CHECK(scanned == 1) << "The value of -m must be an integer";
         // Set system memory capacity
         plasma::PlasmaAllocator::SetFootprintLimit(static_cast<size_t>(system_memory));
         ARROW_LOG(INFO) << "Allowing the Plasma store to use up to "
